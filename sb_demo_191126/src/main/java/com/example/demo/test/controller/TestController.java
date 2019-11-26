@@ -9,6 +9,6 @@ public class TestController {
 	@RequestMapping(value = "test")
 	@ResponseBody
 	public String test() {
-		return "success spring boot";
+		return "Asuccess spring boot";
 	}
 }
