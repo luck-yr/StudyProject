@@ -1,0 +1,74 @@
+<section>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Roles</h1>
+					<ol class="breadcrumb">
+						<li><i class="fa fa-dashboard"></i> <a href="/account/dashboard">Dashboard</a>
+						</li>
+						<li class="active"><i class="fa fa-table"></i> Roles</li>
+					</ol>
+				</div>
+			</div>
+			
+			<!-- message -->
+			<div name="messageDiv" class="row" style="display:none;">
+				<div class="col-lg-12">
+					<div class="alert alert-info alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<i class="fa fa-info-circle"></i> <strong name="message"></strong>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 角色列表 -->
+			<div id="roleList" class="row">
+				<div class="col-lg-12">
+					<h2>角色管理表 <button id="addRole" type="button" class="btn btn-default">新增</button></h2>
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover table-striped">
+							<thead>
+								<tr>
+									<th>角色id</th>
+									<th>角色名称</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="role : ${roles}">
+									<td name="roleId" th:text="${role.roleId}"></td>
+									<td name="roleName" th:text="${role.roleName}"></td>
+									<td>
+										<a name="editRole" href="#">EDIT</a> | 
+										<a th:href="'/account/deleteRole/' + ${role.roleId}">DELETE</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<!-- role input -->
+			<div id="roleEdit" style="display:none;">
+				<h2>角色编辑</h2>
+				<form class="form-horizontal"  role="form"  >
+					<input type="hidden" id="roleId">
+					<div class="form-group">
+						<label for="roleName" class="col-sm-1 control-label">角色名称：</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="roleName"  placeholder="请输入角色名称">
+					    </div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-1 col-sm-2">
+							<button id="roleSubmit" type="submit" class="btn btn-default">提交</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,186 @@
+<section>
+<button id="beijing" >北京</button>
+<button id="sichuan" >四川</button>
+<div  id="myechart" style="width:800px;height:500px">
+</div>
+<div  id="bj" style="width:800px;height:500px">
+</div>
+
+<script type="text/javascript">
+
+    $("#sichuan").bind("click",function(){
+     	$("#bj").hide();
+    	$("#myechart").show();
+    });
+
+
+
+
+    $("#beijing").bind("click",function(){
+    	$("#myechart").hide();
+    	$("#bj").show();
+    	
+    	$.ajax({
+    		type:"get",
+    		url:"beijing",
+    		success:function(data){
+    			var  myChart = echarts.init(document.getElementById('bj'));
+    		    var   option = {
+    		    	    title : {
+    		    	        text: '历年北京高考分数线',
+    		    	        subtext: '一本线'
+    		    	    },
+    		    	    tooltip : {
+    		    	        trigger: 'axis'
+    		    	    },
+    		    	    legend: {
+    		    	        data:['文科','理科']
+    		    	    },
+    		    	    toolbox: {
+    		    	        show : true,
+    		    	        feature : {
+    		    	            dataView : {show: true, readOnly: false},
+    		    	            magicType : {show: true, type: ['line', 'bar']},
+    		    	            restore : {show: true},
+    		    	            saveAsImage : {show: true}
+    		    	        }
+    		    	    },
+    		    	    calculable : true,
+    		    	    xAxis : [
+    		    	        {
+    		    	            type : 'category',
+    		    	            data : ['2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019']
+    		    	        }
+    		    	    ],
+    		    	    yAxis : [
+    		    	        {
+    		    	            type : 'value'
+    		    	        }
+    		    	    ],
+    		    	    series : [
+    		    	        {
+    		    	            name:'文科',
+    		    	            type:'bar',
+    		    	            data:data.wk,
+    		    	            markPoint : {
+    		    	                data : [
+    		    	                    {type : 'max', name: '最大值'},
+    		    	                    {type : 'min', name: '最小值'}
+    		    	                ]
+    		    	            },
+    		    	            markLine : {
+    		    	                data : [
+    		    	                    {type : 'average', name: '平均值'}
+    		    	                ]
+    		    	            }
+    		    	        },
+    		    	        {
+    		    	            name:'理科',
+    		    	            type:'bar',
+    		    	            data:data.lk,
+    		    	            markPoint : {
+    		    	                data : [
+    		    	                     {type : 'max', name: '最大值'},
+    		    	                     {type : 'min', name: '最小值'}
+    		    	                ]
+    		    	            },
+    		    	            markLine : {
+    		    	                data : [
+    		    	                    {type : 'average', name : '平均值'}
+    		    	                ]
+    		    	            }
+    		    	        }
+    		    	    ]
+    		    	};
+    				// 使用刚指定的配置项和数据显示图表。
+	    		    myChart.setOption(option);
+    		},
+    		error:function(data){
+    			alert("failed");
+    		}
+    	});
+    	
+    	
+    });
+
+
+</script>
+<script type="text/javascript">
+/*
+ * 图表
+ */
+var myChart = echarts.init(document.getElementById('myechart'));
+
+var option = {
+	    title : {
+	        text: '历年四川高考分数线',
+	        subtext: '一本线'
+	    },
+	    tooltip : {
+	        trigger: 'axis'
+	    },
+	    legend: {
+	        data:['文科','理科']
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	            dataView : {show: true, readOnly: false},
+	            magicType : {show: true, type: ['line', 'bar']},
+	            restore : {show: true},
+	            saveAsImage : {show: true}
+	        }
+	    },
+	    calculable : true,
+	    xAxis : [
+	        {
+	            type : 'category',
+	            data : ['2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019']
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'value'
+	        }
+	    ],
+	    series : [
+	        {
+	            name:'文科',
+	            type:'bar',
+	            data:[498, 512, 519, 518, 562, 540, 528, 532, 511, 546, 547],
+	            markPoint : {
+	                data : [
+	                    {type : 'max', name: '最大值'},
+	                    {type : 'min', name: '最小值'}
+	                ]
+	            },
+	            markLine : {
+	                data : [
+	                    {type : 'average', name: '平均值'}
+	                ]
+	            }
+	        },
+	        {
+	            name:'理科',
+	            type:'bar',
+	            data:[540, 543, 533, 516, 567, 551, 543, 540, 537, 553, 540],
+	            markPoint : {
+	                data : [
+	                     {type : 'max', name: '最大值'},
+	                     {type : 'min', name: '最小值'}
+	                ]
+	            },
+	            markLine : {
+	                data : [
+	                    {type : 'average', name : '平均值'}
+	                ]
+	            }
+	        }
+	    ]
+	};
+myChart.setOption(option);
+</script>
+
+</section>
+
+	

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.modules.account.dao.ResourceMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.modules.account.entity.Resource">
+    <id column="resource_id" jdbcType="INTEGER" property="resourceId" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="resource_name" jdbcType="VARCHAR" property="resourceName" />
+    <result column="resource_uri" jdbcType="VARCHAR" property="resourceUri" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    resource_id, permission, resource_name, resource_uri
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from m_resource
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from m_resource
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.modules.account.entity.Resource">
+    insert into m_resource (resource_id, permission, resource_name, 
+      resource_uri)
+    values (#{resourceId,jdbcType=INTEGER}, #{permission,jdbcType=VARCHAR}, #{resourceName,jdbcType=VARCHAR}, 
+      #{resourceUri,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.modules.account.entity.Resource">
+    insert into m_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resourceId != null">
+        resource_id,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="resourceName != null">
+        resource_name,
+      </if>
+      <if test="resourceUri != null">
+        resource_uri,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceName != null">
+        #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUri != null">
+        #{resourceUri,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.modules.account.entity.Resource">
+    update m_resource
+    <set>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceName != null">
+        resource_name = #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUri != null">
+        resource_uri = #{resourceUri,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.modules.account.entity.Resource">
+    update m_resource
+    set permission = #{permission,jdbcType=VARCHAR},
+      resource_name = #{resourceName,jdbcType=VARCHAR},
+      resource_uri = #{resourceUri,jdbcType=VARCHAR}
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.modules.account.entity.Resource">
+    <id column="resource_id" jdbcType="INTEGER" property="resourceId" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="resource_name" jdbcType="VARCHAR" property="resourceName" />
+    <result column="resource_uri" jdbcType="VARCHAR" property="resourceUri" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    resource_id, permission, resource_name, resource_uri
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from m_resource
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from m_resource
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.modules.account.entity.Resource">
+    insert into m_resource (resource_id, permission, resource_name, 
+      resource_uri)
+    values (#{resourceId,jdbcType=INTEGER}, #{permission,jdbcType=VARCHAR}, #{resourceName,jdbcType=VARCHAR}, 
+      #{resourceUri,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.modules.account.entity.Resource">
+    insert into m_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resourceId != null">
+        resource_id,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="resourceName != null">
+        resource_name,
+      </if>
+      <if test="resourceUri != null">
+        resource_uri,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceName != null">
+        #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUri != null">
+        #{resourceUri,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.modules.account.entity.Resource">
+    update m_resource
+    <set>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceName != null">
+        resource_name = #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUri != null">
+        resource_uri = #{resourceUri,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.modules.account.entity.Resource">
+    update m_resource
+    set permission = #{permission,jdbcType=VARCHAR},
+      resource_name = #{resourceName,jdbcType=VARCHAR},
+      resource_uri = #{resourceUri,jdbcType=VARCHAR}
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </update>
+</mapper>

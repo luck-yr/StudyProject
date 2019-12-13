@@ -2,12 +2,16 @@ package com.example.demo.modules.test.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.modules.test.entity.City;
@@ -48,6 +52,31 @@ public interface TestDao {
 	@Select("select * from m_country where country_name=#{countryName}")
 	@ResultMap(value = "countryResult")
 	Country getCountryByCountryName(String countryName);
+
+	/**
+	 * 全查city在service层实现分页
+	 */
+	@Select("select * from m_city")
+	List<City> getCitiesByPage();
+
+	/**
+	 * 添加一个新的城市
+	 */
+	@Insert("insert into m_city (city_name, local_city_name, country_id, date_created)  values( #{cityName}, #{localCityName}, #{countryId}, #{dateCreated} )")
+	@Options(useGeneratedKeys = true,keyColumn = "city_id",keyProperty = "cityId")
+	void insertCityByCity(City city);
+
+	/**
+	 * 更新城市
+	 */
+	@Update("update m_city set local_city_name = #{localCityName} where city_id = #{cityId}")
+	void updateCityByCity(City city);
+
+	/**
+	 * 删除城市信息
+	 */
+	@Delete("delete from m_city where city_id = #{cityId}")
+	void deleteCity(int cityId);
 
 	
 }
